@@ -61,6 +61,7 @@ function render(image) {
 
   // lookup uniforms
   var resolutionLocation = gl.getUniformLocation(program, "u_resolution");
+  var textureSizeLocation = gl.getUniformLocation(program, "u_textureSize");
 
   webglUtils.resizeCanvasToDisplaySize(gl.canvas);
 
@@ -106,6 +107,9 @@ function render(image) {
 
   // set the resolution
   gl.uniform2f(resolutionLocation, gl.canvas.width, gl.canvas.height);
+
+  // set the size of the image
+  gl.uniform2f(textureSizeLocation, image.width, image.height);
 
   // Draw the rectangle.
   var primitiveType = gl.TRIANGLES;
